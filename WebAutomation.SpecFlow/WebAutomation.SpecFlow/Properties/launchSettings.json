@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WebAutomation.SpecFlow": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

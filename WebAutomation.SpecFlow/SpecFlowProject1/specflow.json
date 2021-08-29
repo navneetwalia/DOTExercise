@@ -1,0 +1,15 @@
+﻿{
+  "bindingCulture": {
+    "language": "en-us"
+  },
+  "language": {
+    "feature": "en-us"
+  },
+  "pluginparameters": {
+    "variantkey": "Browser"
+  },
+  "stepAssemblies": [
+    { "assembly": "WebAutomation.SpecFlow" }
+  ]
+
+}

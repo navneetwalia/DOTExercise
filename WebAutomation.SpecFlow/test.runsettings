@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<!-- 
+	<NUnitTest adapter -->
+	<NUnit>
+		<Parallelize>
+			<Workers>3</Workers>
+			<Scope>ClassLevel</Scope>
+		</Parallelize>
+	</NUnit>
+</RunSettings>
