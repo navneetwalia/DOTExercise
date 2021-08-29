@@ -27,9 +27,19 @@ namespace WebAutomation.SpecFlow.Hooks
         [BeforeScenario(Order = 1)]
         public void BeforeScenario()
         {
-            _scenarioContext.TryGetValue("Browser", out var browser);
-          
-            switch(browser)
+            var browser = string.Empty;
+            foreach (var tag in _scenarioContext.ScenarioInfo.Tags)
+            {
+                var tokens = tag.Split(':');
+                if (tokens.Length == 2 && tokens[0] == "Browser")
+                {
+                    browser = tokens[1];
+                    break;
+                }
+            }
+            //_scenarioContext.TryGetValue("Browser", out var browser);
+
+            switch (browser)
             {
                 case "Chrome":
                     _driver = SetupChromeDriver();

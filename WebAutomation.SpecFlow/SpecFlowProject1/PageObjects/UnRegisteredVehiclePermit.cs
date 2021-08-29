@@ -10,13 +10,14 @@ namespace DOTExercise.PageObjects
         private readonly ScenarioContext _scenarioContext;
         private readonly IWebDriver _driver;
         private readonly string pageUrl = "https://www.vicroads.vic.gov.au/registration/limited-use-permits/unregistered-vehicle-permits/get-an-unregistered-vehicle-permit";
-        private readonly string pageTitle = "Get an Unregistered Vehicle Permit: VicRoads";
+        private readonly string pageTitle = "Get an Unregistered Vehicle Permit : VicRoads";
         private readonly string pageContent = "Step 1 of 7 : Calculate fee";
 
 
         private By _vehicleTypeDropDown = By.Id("ph_pagebody_0_phthreecolumnmaincontent_0_panel_VehicleType_DDList");
         
         public UnRegisteredVehiclePermit(ScenarioContext scenarioContext, IWebDriver driver, ConfigurationDriver configurationDriver)
+            :base(driver)
         {
 
             _scenarioContext = scenarioContext;
@@ -33,8 +34,8 @@ namespace DOTExercise.PageObjects
 
         public UnRegisteredVehiclePermit NavigateToUrl()
         {
-            Verify();
             _driver.Navigate().GoToUrl(pageUrl);
+            Verify();
             return this;
         }
 

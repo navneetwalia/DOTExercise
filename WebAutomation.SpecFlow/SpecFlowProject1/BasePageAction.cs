@@ -8,6 +8,12 @@ namespace DOTExercise
     class BasePageAction
     {
         protected IWebDriver driver;
+
+        public BasePageAction(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
+
         protected int timeout = 20;
         public BasePageAction VerifyPageUrl(string pageUrl)
         {

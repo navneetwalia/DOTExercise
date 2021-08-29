@@ -33,6 +33,7 @@ namespace WebAutomation.SpecFlow.Drivers
             // set the browser config
             _configuration.GetSection("Browser").Bind(browser);
             _browser = browser;
+
         }
 
         /// <summary>

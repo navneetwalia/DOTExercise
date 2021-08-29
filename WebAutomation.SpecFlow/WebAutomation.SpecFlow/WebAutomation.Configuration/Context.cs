@@ -16,14 +16,13 @@ namespace WebAutomation.Configuration
 
 
             // set the configuration builder
-            IConfigurationBuilder config = new ConfigurationBuilder();
-                               
-                //.SetBasePath(System.IO.Directory.GetCurrentDirectory())
-                //                .AddJsonFile(jsonFile, optional: true, reloadOnChange: true)
-                //                .AddJsonFile($"appsettings.{System.Environment.MachineName}.json", true, true)
-                //                .AddEnvironmentVariables();
+            IConfigurationBuilder config = new ConfigurationBuilder()
+                .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+                                .AddJsonFile(jsonFile, optional: true, reloadOnChange: true)
+                                .AddJsonFile($"appsettings.{System.Environment.MachineName}.json", true, true)
+                                .AddEnvironmentVariables();
 
-           
+
 
             //Build the configuration
             Configuration = config.Build();

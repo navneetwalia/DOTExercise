@@ -1,12 +1,14 @@
 ﻿Feature: Vehicle Permit Registration
 Unregistered vehicle registration
-@mytag
-Scenario: Add two numbers
-	Given the first number is 50
-	And the second number is 70
-	When the two numbers are added
-	Then the result should be 120
 
 @Browser:Chrome
-Scenario: Verify Unregistered vehicle permit registration page has select permit type is displayed
+Scenario Outline: Verify Unregistered vehicle permit registration step two page has select permit type displayed 
 	Given the user is on unregistered vehicle permit registration page
+	When the user enters the <Vehicle Type> and other details
+	And the user calculates fees
+	And the user navigates to step two of permit registration
+	Then the select permit type is displayed on step two of vehicle registration
+
+	Examples:
+		| Vehicle Type |
+		|              |
