@@ -1,5 +1,5 @@
 ﻿Feature: Vehicle Permit Registration
-Unregistered vehicle registration
+Unregistered vehicle registration for different vehicle types 
 
 @Browser:Chrome
 Scenario Outline: Verify Unregistered vehicle permit registration second step displays permit type selection
