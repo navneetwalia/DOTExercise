@@ -7,6 +7,6 @@ Scenario: Add two numbers
 	When the two numbers are added
 	Then the result should be 120
 
-	@Browser:Chrome
+@Browser:Chrome
 Scenario: Verify Unregistered vehicle permit registration page has select permit type is displayed
 	Given the user is on unregistered vehicle permit registration page
