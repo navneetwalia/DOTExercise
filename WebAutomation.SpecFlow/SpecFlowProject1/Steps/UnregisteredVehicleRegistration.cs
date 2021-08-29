@@ -13,6 +13,7 @@ namespace DOTExercise.Steps
 
         private readonly ScenarioContext _scenarioContext;
         private readonly UnRegisteredVehiclePermit _unRegisteredVehiclePermit;
+        private  VehiclePermitSecondStep _vehiclePermitSecondStep;
         public UnregisteredVehicleRegistration(ScenarioContext scenarioContext,IWebDriver webDriver, ConfigurationDriver configurationDriver)
         {
             _scenarioContext = scenarioContext;
@@ -31,43 +32,46 @@ namespace DOTExercise.Steps
             number = 1;
         }
 
-        [Given("the second number is (.*)")]
-        public void GivenTheSecondNumberIs(int number)
-        {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
-
-            number = 2;
-        }
-
-        [When("the two numbers are added")]
-        public void WhenTheTwoNumbersAreAdded()
-        {
-            //TODO: implement act (action) logic
-
-            int sum = 3;
-        }
-
-        [Then("the result should be (.*)")]
-        public void ThenTheResultShouldBe(int result)
-        {
-            //TODO: implement assert (verification) logic
-
-            string result1 = "Pass";
-        }
 
         #region Given
 
         [Given(@"the user is on unregistered vehicle permit registration page")]
         public void GivenTheUserIsOnUnregisteredVehiclePermitRegistrationPage()
         {
-            //string result1 = "Pass";
             _unRegisteredVehiclePermit.NavigateToUrl();
         }
 
+        #endregion
+
+        #region When
+
+        [When(@"the user enters the (.*) and other details")]
+        public void WhenTheUserEntersTheVehicleTypeAndOtherDetails(string vehicleType)
+        {
+            _unRegisteredVehiclePermit.EnterPermitDetails(vehicleType);
+        }
+
+        [When(@"the user is able to view permit date based on permit duration and calculate fees")]
+        public void WhenTheUserIsAbleToViewPermitDateBasedOnPermitDurationAndCalculateFees()
+        {
+            _unRegisteredVehiclePermit.ViewPermitDateAndCalculatedFees();
+        }
+
+        [When(@"the user navigates to step two of permit registration")]
+        public void WhenTheUserNavigatesToStepTwoOfPermitRegistration()
+        {
+            _vehiclePermitSecondStep =_unRegisteredVehiclePermit.ClickNext();
+        }
+
+        #endregion
+
+        #region Then
+
+        [Then(@"the select permit type is displayed on step two of vehicle registration")]
+        public void ThenTheSelectPermitTypeIsDisplayedOnStepTwoOfVehicleRegistration()
+        {
+            _vehiclePermitSecondStep.Verify();
+        }
 
         #endregion
     }

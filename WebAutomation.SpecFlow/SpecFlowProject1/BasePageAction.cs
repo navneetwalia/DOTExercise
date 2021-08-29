@@ -1,7 +1,10 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebAutomation.SpecFlow.Extensions;
+using SeleniumExtras.WaitHelpers;
 
 namespace DOTExercise
 {
@@ -54,6 +57,41 @@ namespace DOTExercise
             VerifyPageContent(pageContent);
             return this;
         }
+
+        public BasePageAction Click(By element)
+        {
+            driver.FindElement(element).Click();
+            IWebDriverExtension.Delay(driver, 600);
+            return this;
+        }
+
+        public BasePageAction EnterText(By element, string textValue)
+        {
+            driver.FindElement(element).SendKeys(textValue);
+            IWebDriverExtension.Delay(driver, 500);
+            return this;
+        }
+
+        public IWebElement WaitUntilElementIsVisible(By element)
+        {
+            return driver.WaitDriver().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(element));
+        }
+
+        public BasePageAction SelectElementById(string selectId, string optionText)
+        {
+            driver.FindElement(By.XPath("//select[@id='" + selectId + "']/option[contains(.,'" + optionText + "')]")).Click();
+            return this;
+
+        }
+
+        public BasePageAction SelectElementByIndex(string selectId, int index=0)
+        {
+            var selectElement = new SelectElement(driver.FindElement(By.Id(selectId)));
+            selectElement.SelectByIndex(index);
+            return this;
+
+        }
+        
 
     }
 }
