@@ -28,10 +28,16 @@ namespace DOTExercise.PageObjects
         private By _dateDisplayed = By.XPath("//*[@id='PermitDurationModule']/span[2]");
         private By _permitCost = By.XPath("//*[@id='ph_pagebody_0_phthreecolumnmaincontent_0_panel_divfee']/span[1]");
         private By _btnNext = By.Id("ph_pagebody_0_phthreecolumnmaincontent_0_panel_btnNext");
-        
+        private By _carryingCap = By.Id("carrying-capacity-content-goods-vehicle");
+        private string _carryingCapacity = "ph_pagebody_0_phthreecolumnmaincontent_0_panel_GoodsVehicleSubType_DDList";
+        private string _engineCapacity = "ph_pagebody_0_phthreecolumnmaincontent_0_panel_MotorcycleSubType_DDList";
+
+
         private const string _defaultAddress = "Unit 7 11 Sample Street, Broadmeadows VIC 3047";
         private const string _defaultPassengerVehicle = "Sedan";
         private const string _defaultPermitDuration = "1 day";
+        private const string _defaultCarryingCap = "2 tonnes or less";
+        private const string _defaultEngineCap = "Less than 61 cc";
 
         public UnRegisteredVehiclePermit(ScenarioContext scenarioContext, IWebDriver driver, ConfigurationDriver configurationDriver)
             :base(driver)
@@ -60,8 +66,21 @@ namespace DOTExercise.PageObjects
         {
             WaitUntilElementIsVisible(_vehicleType);
             SelectElementById(_vehicleTypeId, vehicleTypeOption);
-            WaitUntilElementIsVisible(_passengerVehicleType);
-            SelectElementById(_passengerVehicleId, _defaultPassengerVehicle);
+            switch (vehicleTypeOption)
+            {
+                case "Passenger vehicle":
+                    WaitUntilElementIsVisible(_passengerVehicleType);
+                    SelectElementById(_passengerVehicleId, _defaultPassengerVehicle);
+                    break;
+                case "Goods carrying vehicle":
+                    WaitUntilElementIsVisible(_carryingCap);
+                    SelectElementById(_carryingCapacity, _defaultCarryingCap);
+                    break;
+                case "Motorcycle":
+                     SelectElementById(_engineCapacity, _defaultEngineCap);
+                    break;
+                default: break;
+            }
             EnterText(_addressText, _defaultAddress);
             SelectElementById(_permitDuration, _defaultPermitDuration);
             _scenarioContext.TryAdd("PermitDays", _defaultPermitDuration);
