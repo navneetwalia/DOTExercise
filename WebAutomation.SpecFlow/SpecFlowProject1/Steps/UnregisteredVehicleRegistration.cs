@@ -45,9 +45,10 @@ namespace DOTExercise.Steps
 
         #region When
 
-        [When(@"the user enters the (.*) and other details")]
-        public void WhenTheUserEntersTheVehicleTypeAndOtherDetails(string vehicleType)
+        [When(@"the user enters the (.*) and mandatory details")]
+        public void WhenTheUserEntersTheVehicleAndMandatoryDetails(string vehicleType)
         {
+
             _unRegisteredVehiclePermit.EnterPermitDetails(vehicleType);
         }
 

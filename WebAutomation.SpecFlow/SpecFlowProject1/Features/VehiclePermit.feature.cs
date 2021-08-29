@@ -74,15 +74,15 @@ namespace DOTExercise.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify Unregistered vehicle permit registration step two page has select permit t" +
-            "ype displayed")]
+        [NUnit.Framework.DescriptionAttribute("Verify Unregistered vehicle permit registration second step displays permit type " +
+            "selection")]
         [NUnit.Framework.CategoryAttribute("Browser:Chrome")]
         [NUnit.Framework.TestCaseAttribute("Passenger vehicle", null)]
         [NUnit.Framework.TestCaseAttribute("Goods carrying vehicle", null)]
         [NUnit.Framework.TestCaseAttribute("Prime Mover", null)]
         [NUnit.Framework.TestCaseAttribute("Motorcycle", null)]
         [NUnit.Framework.TestCaseAttribute("Trailer/Caravan", null)]
-        public virtual void VerifyUnregisteredVehiclePermitRegistrationStepTwoPageHasSelectPermitTypeDisplayed(string vehicleType, string[] exampleTags)
+        public virtual void VerifyUnregisteredVehiclePermitRegistrationSecondStepDisplaysPermitTypeSelection(string vehicleType, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Browser:Chrome"};
@@ -92,9 +92,9 @@ namespace DOTExercise.Features
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Vehicle Type", vehicleType);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Unregistered vehicle permit registration step two page has select permit t" +
-                    "ype displayed", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("VehicleType", vehicleType);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Unregistered vehicle permit registration second step displays permit type " +
+                    "selection", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -119,7 +119,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("the user is on unregistered vehicle permit registration page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.When(string.Format("the user enters the {0} and other details", vehicleType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("the user enters the {0} and mandatory details", vehicleType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
  testRunner.And("the user is able to view permit date based on permit duration and calculate fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

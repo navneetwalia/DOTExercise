@@ -24,7 +24,7 @@ namespace DOTExercise.PageObjects
         private By _addressText = By.Id("ph_pagebody_0_phthreecolumnmaincontent_0_panel_AddressLine_SingleLine_CtrlHolderDivShown");
         private string _permitDuration = "ph_pagebody_0_phthreecolumnmaincontent_0_panel_PermitDuration_DDList";
         private By _calculateButton = By.Id("ph_pagebody_0_phthreecolumnmaincontent_0_panel_btnCal");
-        private By _permit = By.ClassName("simple-label");
+        private By _permit = By.XPath("//span[@class='simple-select v_required medium fn_uvp-calc-update permitdurationelement']/span/span");
         private By _dateDisplayed = By.XPath("//*[@id='PermitDurationModule']/span[2]");
         private By _permitCost = By.XPath("//*[@id='ph_pagebody_0_phthreecolumnmaincontent_0_panel_divfee']/span[1]");
         private By _btnNext = By.Id("ph_pagebody_0_phthreecolumnmaincontent_0_panel_btnNext");
@@ -32,13 +32,9 @@ namespace DOTExercise.PageObjects
         private string _carryingCapacity = "ph_pagebody_0_phthreecolumnmaincontent_0_panel_GoodsVehicleSubType_DDList";
         private string _engineCapacity = "ph_pagebody_0_phthreecolumnmaincontent_0_panel_MotorcycleSubType_DDList";
 
-
         private const string _defaultAddress = "Unit 7 11 Sample Street, Broadmeadows VIC 3047";
-        private const string _defaultPassengerVehicle = "Sedan";
-        private const string _defaultPermitDuration = "1 day";
-        private const string _defaultCarryingCap = "2 tonnes or less";
-        private const string _defaultEngineCap = "Less than 61 cc";
-
+        
+      
         public UnRegisteredVehiclePermit(ScenarioContext scenarioContext, IWebDriver driver, ConfigurationDriver configurationDriver)
             :base(driver)
         {
@@ -70,20 +66,22 @@ namespace DOTExercise.PageObjects
             {
                 case "Passenger vehicle":
                     WaitUntilElementIsVisible(_passengerVehicleType);
-                    SelectElementById(_passengerVehicleId, _defaultPassengerVehicle);
+                    SelectElementByIndex(_passengerVehicleId);
                     break;
                 case "Goods carrying vehicle":
                     WaitUntilElementIsVisible(_carryingCap);
-                    SelectElementById(_carryingCapacity, _defaultCarryingCap);
+                    SelectElementByIndex(_carryingCapacity);
                     break;
                 case "Motorcycle":
-                     SelectElementById(_engineCapacity, _defaultEngineCap);
+                     SelectElementByIndex(_engineCapacity);
                     break;
                 default: break;
             }
             EnterText(_addressText, _defaultAddress);
-            SelectElementById(_permitDuration, _defaultPermitDuration);
-            _scenarioContext.TryAdd("PermitDays", _defaultPermitDuration);
+            
+            SelectElementByIndex(_permitDuration);
+           
+            _scenarioContext.TryAdd("PermitDays", GetText(_permit));
             Click(_calculateButton);
             return this;
         }

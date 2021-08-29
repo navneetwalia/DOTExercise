@@ -84,14 +84,27 @@ namespace DOTExercise
 
         }
 
-        public BasePageAction SelectElementByIndex(string selectId, int index=0)
+        //public BasePageAction SelectElementByIndex(string selectId, int index=0)
+        //{
+        //    var selectElement = new SelectElement(driver.FindElement(By.Id(selectId)));
+        //    selectElement.SelectByIndex(index);
+        //    return this;
+
+        //}
+
+        public BasePageAction SelectElementByIndex(string selectId, int index=2)
         {
-            var selectElement = new SelectElement(driver.FindElement(By.Id(selectId)));
-            selectElement.SelectByIndex(index);
+            driver.FindElement(By.XPath("//select[@id='" + selectId + "']/option[" + index +"]")).Click();
+            driver.Delay(500);
             return this;
 
         }
-        
+
+        public string GetText(By element)
+        {
+            var ele = WaitUntilElementIsVisible(element);
+            return ele.Text;
+        }
 
     }
 }

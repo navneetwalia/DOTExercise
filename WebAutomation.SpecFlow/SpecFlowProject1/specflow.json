@@ -5,14 +5,7 @@
   "language": {
     "feature": "en-us"
   },
-  "pluginparameters": {
-    "variantkey": "Browser"
-  },
-  "stepAssemblies": [
+   "stepAssemblies": [
     { "assembly": "WebAutomation.SpecFlow" }
-  ],
-  "livingDocGenerator": {
-    "enabled": true,
-    "filePath": "TestExecution.json"
-  }
-}
+  ]
+ }
