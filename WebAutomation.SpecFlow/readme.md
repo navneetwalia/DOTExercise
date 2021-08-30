@@ -10,7 +10,7 @@ DOT Exercise Automaton Framework is a C# framework which automates the manual te
 
 1. Install Visual Studio 2019
 2. Install Microsoft .NET 5.0
-3. Register with Specflow ( any email is ok and not necessarily moula email), and you need to register only the first time you run the tests.
+3. Register with Specflow ( if not already registered)
 4. Download this repository from BitBucket
 5. Build the solution
 6. Run all tests or any specific test from the test explorer
